@@ -7,7 +7,7 @@ class News:
         self.id =id
         self.title = title
         self.overview = overview
-        self.poster = "https://image.tmdb.org/t/p/w500/" + poster
+        self.poster = "https://www.newsbtc.com/wp-content/uploads/2019/09/shutterstock_387276601-1200x780.jpg" + poster
 
 
 
