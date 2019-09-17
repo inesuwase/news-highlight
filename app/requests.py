@@ -1,52 +1,3 @@
-# import urllib.request,json
-# from .models import Sources,Article
-
-# # Getting api key
-# api_key = None
-# # Getting the source base url
-# Sources_base_url= None
-# # review_base_url = None
-
-# def configure_request(app):
-#     global api_key,Sources_base_url
-#     api_key = app.config['SOURCES_API_Key']
-#     base_url = app.config['SOURCES_BASE_URL']
-#     # review_base_url = app.config['REVIEWS_BASE_URL']
-
-# def get_Sources(category):
-# 	'''
-# 	Function that gets the json response to our url request
-# 	'''
-# 	get_Sources_url = Sources_base_url.format(category, api_key)
-
-# 	with urllib.request.urlopen(get_Sources_url,data=None) as url:
-# 		get_Sources_data = url.read()
-# 		get_Sources_response = json.loads(get_Sources_data)
-# 		Sources_results = None
-
-# 		if get_Sources_response['Sources']:
-# 		   Sources_results_list = get_Sources_response('Sources')
-# 		   Sources_results = process_Sources(Sources_results_list)
-
-# 	return Sources_results
-
-# def process_results(Sources_results):
-# 	'''
-# 	Function  that processes the News result and transform them to a list of Objects
-# 	'''
-# 	Sources_results = []
-# 	for sources_item in Sources_results:
-# 		id = sources_item.get('id')
-# 		name = sources_item.get('name')
-# 		description = sources_item.get('description')
-# 		url = sources_item.get('url')
-# 		category = sources_item.get('category')
-#         if name:
-# 		    source_object = Sources(id,name,description,url,category)
-# 		    Sources_results.append(sources_object)
-
-# 	return Sources_list 
-
 import urllib.request,json
 from .models import Sources
 # Getting api key
@@ -104,5 +55,47 @@ def process_results(sources_list):
 
     return sources_list
 
+def get_articles(id):
+    '''
+    Function that gets the json response to our url request
+    '''
+    get_articles_url = bases_url.format(id,api_key)
+    print(get_articles_url)
 
+    with urllib.request.urlopen(get_articles_url) as url:
+        get_articles_data = url.read()
+        get_articles_response = json.loads(get_articles_data)
+
+        articles_results = None
+
+        if get_articles_response['articles']:
+            articles_results_list = get_articles_response['articles']
+            articles_results = process_articles(articles_results_list)
+
+
+    return articles_results
+def process_articles(articles_list):
+    '''
+    Function  that processes the articles result and transform them to a list of Objects
+    Args:
+    articles_list: A list of dictionaries that contain articles details
+    Returns :
+    sources_results: A list ofarticles objects
+    '''
+    articles_results = []
+    for articles_item in articles_list:
+        
+        id = articles_item.get('id')
+        name = articles_item.get('name')
+        author = articles_item.get('author')
+        title = articles_item.get('title')
+        description = articles_item.get('description')
+        url = articles_item.get('url')
+        urlToImage = articles_item.get('urlToImage')
+        publishedAt = articles_item.get('publishedAt')
+
+        if urlToImage:
+           articles_object = Articles(id,name,author,title,description,url,urlToImage,publishedAt)
+           articles_results.append(articles_object)
+    return articles_results
 
