@@ -1,0 +1,13 @@
+{% macro displaysourcesList(sources_list) %}
+   {% for sources in category_sources%}
+  
+              {{ source.description }}
+              {{source.name}}
+              {{ sources.category}}
+              {{ sources.technology}}
+              {{ sources.sports}}
+              <a href="{{sources.url}}">Url</a> 
+      
+   {% endfor %}
+<!-- </div> -->
+{% endmacro %} 

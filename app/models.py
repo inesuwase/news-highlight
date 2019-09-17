@@ -1,42 +1,37 @@
-class News:
+class Sources:
     '''
-    News class to define News Objects
+    Sources class to define news Objects
     '''
 
-    def __init__(self,id,title,overview,poster):
-        self.id =id
-        self.title = title
-        self.overview = overview
-        self.poster = "https://www.newsbtc.com/wp-content/uploads/2019/09/shutterstock_387276601-1200x780.jpg" + poster
+    def __init__(self, id,name,description,url,category):
+        self.id = id
+        self.name = name
+        self.description = description
+        self.url = url
+        self.category = category
 
 
+# class Review:
 
-class Review:
-
-    all_reviews = []
-
-    def __init__(self,news_id,title,imageurl,review):
-        self.news_id = news_id
-        self.title = title
-        self.imageurl = imageurl
-        self.review = review
-
-
-    def save_review(self):
-        Review.all_reviews.append(self)
-
-
-    @classmethod
-    def clear_reviews(cls):
-        Review.all_reviews.clear()
-
-    @classmethod
-    def get_reviews(cls,id):
-
-        response = []
-
-        for review in cls.all_reviews:
-            if review.news_id == id:
-                response.append(review)
-
-        return response
+#    	'''
+# 	Review Class to define Review Objects
+# 	'''
+# 	def __init__(self,author,title,description,url,image,date):
+# 		'''
+# 		Function to initialize Review Objects
+# 		It defines the properties each Review object will hold.
+	
+# 		Args: 
+# 			1. author
+# 			2. title
+# 			3. description
+# 			4. url
+# 			5. image
+# 			6. date
+# 		'''
+# 		self.author = author
+# 		self.title = title
+# 		self.description = description
+# 		self.url = url
+# 		self.image = image
+#         self.date = date

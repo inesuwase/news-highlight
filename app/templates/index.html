@@ -1,1 +1,18 @@
-<h1> Hello world</h1>
+{% extends 'bootstrap/base.html'%}
+{% block content%}
+    <h1>SOURCES</h1>
+      <ul>
+        {% for sources in category_sources %}
+            <li><h2>Name:{{ sources.name}}</li></h2>
+            <li>ID:{{ sources.id}}</li> 
+            <li>Description:{{ sources.description}}</li>
+            <li><a href="{{sources.url}}">Url</a></li>
+            <li>category:{{ sources.category}}</li>
+            <li>Language:{{ sources.technology}}</li> 
+            <li>Country:{{ sources.sports}}</li> 
+            <a href="/articles/{{sources.id}}">View articles</a>    
+        {% endfor %}
+        
+    </ul>
+    {%endblock%}
+
