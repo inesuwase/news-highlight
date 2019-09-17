@@ -23,7 +23,7 @@ THis is  an application that will help them list and preview news articles from 
  python
 
 ## Development server
-Run ng serve for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Run python3.6 manage.py server. Navigate to http://127.0.0.1:5000/. The app will automatically reload if you change any of the source files.
 
 ## Further help
 To get more help on the python go check out the python README.
